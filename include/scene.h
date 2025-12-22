@@ -20,7 +20,7 @@ struct RenderObject {
   uint32_t texture_id;
   // Matrix that takes this object from local space to world space.
   Matrix<4, 4> transform;
-  
+
   // Whether or not this object is valid. For deleted objects, this will be
   // false.
   [[nodiscard]] bool IsValid() const;
