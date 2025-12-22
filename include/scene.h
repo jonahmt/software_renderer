@@ -11,15 +11,19 @@ namespace softrender {
 
 // Represents an instance of an object in the scene.
 struct RenderObject {
-  // Whether or not this object is valid. For deleted objects, this will be
-  // false.
-  bool valid;
+  // Special id value for invalid object IDs (those that have been deleted).
+  static constexpr uint32_t kInvalidObjectId = 0xFFFFFFFF;
+
   // ID of the mesh for this object.
   uint32_t mesh_id;
   // ID of the texture for this object.
   uint32_t texture_id;
   // Matrix that takes this object from local space to world space.
   Matrix<4, 4> transform;
+  
+  // Whether or not this object is valid. For deleted objects, this will be
+  // false.
+  [[nodiscard]] bool IsValid() const;
 };
 
 class Scene {
@@ -34,16 +38,12 @@ class Scene {
                           const Matrix<4, 4>& transform);
 
   // Returns a read only reference to the list of all meshes in the scene.
-  [[nodiscard]] const std::vector<Mesh>& GetMeshes() const { return meshes_; }
+  [[nodiscard]] const std::vector<Mesh>& GetMeshes() const;
   // Returns a read only reference to the list of all textures in the scene.
-  [[nodiscard]] const std::vector<Texture>& GetTextures() const {
-    return textures_;
-  }
+  [[nodiscard]] const std::vector<Texture>& GetTextures() const;
   // Returns a read only reference to the list of all render objects in the
   // scene.
-  [[nodiscard]] const std::vector<RenderObject>& GetObjects() const {
-    return objects_;
-  }
+  [[nodiscard]] const std::vector<RenderObject>& GetObjects() const;
 
   // Updates the transform of the specified render object.
   void UpdateObjectTransform(uint32_t object_id, const Matrix<4, 4>& transform);

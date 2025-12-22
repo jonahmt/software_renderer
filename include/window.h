@@ -32,7 +32,7 @@ class Window {
 
   bool should_close_;
   int width_;
-  int height;
-}
+  int height_;
+};
 
 }  // namespace softrender

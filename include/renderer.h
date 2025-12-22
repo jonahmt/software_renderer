@@ -1,6 +1,11 @@
 #pragma once
 
+#include <vector>
+
+#include "camera.h"
 #include "math.h"
+#include "pixelbuffer.h"
+#include "scene.h"
 
 namespace softrender {
 
@@ -14,12 +19,20 @@ class Renderer {
 
   // Provides read-only access to the underlying pixelbuffer containing the
   // rendered image.
-  const Pixelbuffer& GetPixelbuffer() const;
+  [[nodiscard]] const Pixelbuffer& GetPixelbuffer() const;
+
+  // Renders the specified scene using the specified camera. Updates the stored
+  // pixelbuffer with the rendered image.
+  void Render(const Scene& scene, const Camera& camera);
 
  private:
   int width_;
   int height_;
   Pixelbuffer pb_;
+  // Depth buffer for the current frame. Same dimensions as the pixelbuffer.
+  // Each element is the depth value for the pixel at the corresponding index in
+  // the pixelbuffer (larger is further from the camera).
+  std::vector<Real> depth_buffer_;
 };
 
 }  // namespace softrender

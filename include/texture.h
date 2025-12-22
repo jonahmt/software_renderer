@@ -7,6 +7,9 @@ namespace softrender {
 
 class Texture {
  public:
+  Texture(int width, int height);
+  ~Texture();
+
   // Gets the pixel color at the specified coordinates (x, y) as an RGBA
   // uint32_t.
   [[nodiscard]] uint32_t GetPixel(int x, int y) const;
@@ -15,9 +18,9 @@ class Texture {
   void SetPixel(int x, int y, uint32_t color);
 
   // Returns the width of the texture in pixels.
-  [[nodiscard]] int GetWidth() const { return width_; }
+  [[nodiscard]] int GetWidth() const;
   // Returns the height of the texture in pixels.
-  [[nodiscard]] int GetHeight() const { return height_; }
+  [[nodiscard]] int GetHeight() const;
 
  private:
   // Width of the texture in pixels.

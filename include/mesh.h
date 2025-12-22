@@ -25,24 +25,16 @@ class Mesh {
   [[nodiscard]] Vector<3> GetVertexNormal(uint32_t v) const;
 
   // Returns a read only reference to the entire list of vertex positions.
-  [[nodiscard]] const std::vector<Vector<3>>& GetPositions() const {
-    return vertices_.positions;
-  }
+  [[nodiscard]] const std::vector<Vector<3>>& GetPositions() const;
   // Returns a read only reference to the entire list of vertex texture
   // coordinates.
-  [[nodiscard]] const std::vector<Vector<2>>& GetUVs() const {
-    return vertices_.uvs;
-  }
+  [[nodiscard]] const std::vector<Vector<2>>& GetUVs() const;
   // Returns a read only reference to the entire list of vertex normals.
-  [[nodiscard]] const std::vector<Vector<3>>& GetNormals() const {
-    return vertices_.normals;
-  }
+  [[nodiscard]] const std::vector<Vector<3>>& GetNormals() const;
 
   // Returns a read only reference to the entire list of triangle vertex
   // indices.
-  [[nodiscard]] const std::vector<uint32_t>& GetIndices() const {
-    return tri_list_.indices;
-  }
+  [[nodiscard]] const std::vector<uint32_t>& GetIndices() const;
 
  private:
   // Store data as a struct of arrays for cache efficiency
