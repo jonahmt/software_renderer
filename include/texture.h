@@ -8,7 +8,6 @@ namespace softrender {
 class Texture {
  public:
   Texture(int width, int height);
-  ~Texture();
 
   // Gets the pixel color at the specified coordinates (x, y) as an RGBA
   // uint32_t.

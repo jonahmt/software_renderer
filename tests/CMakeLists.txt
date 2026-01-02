@@ -1,4 +1,10 @@
-add_executable(pixelbuffer_test pixelbuffer_test.cc)
-target_link_libraries(pixelbuffer_test PRIVATE SoftwareRenderer_lib gtest_main)
-add_test(NAME pixelbuffer_test COMMAND pixelbuffer_test)
+file(GLOB TEST_SOURCES "*.cc")
 
+foreach(test_source ${TEST_SOURCES})
+    # Get the filename without extension (e.g., pixelbuffer_test)
+    get_filename_component(test_name ${test_source} NAME_WE)
+    
+    add_executable(${test_name} ${test_source})
+    target_link_libraries(${test_name} PRIVATE SoftwareRenderer_lib gtest_main)
+    add_test(NAME ${test_name} COMMAND ${test_name})
+endforeach()

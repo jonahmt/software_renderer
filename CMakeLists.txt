@@ -1,5 +1,12 @@
 cmake_minimum_required(VERSION 3.15)
 
+# Silences the "DOWNLOAD_EXTRACT_TIMESTAMP" warning
+cmake_policy(SET CMP0135 NEW)
+
+# Silences the Eigen deprecation warning about CMake versions.
+# This tells CMake to ignore the fact that Eigen asks for an old version.
+set(CMAKE_POLICY_DEFAULT_CMP0000 OLD) 
+
 project(SoftwareRenderer LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
