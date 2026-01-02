@@ -7,7 +7,13 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include(FetchContent)
 
+# Enable export of compile commands for clangd
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 # Fetch Eigen linear algebra library
+set(EIGEN_BUILD_PKGCONFIG OFF CACHE BOOL "" FORCE)
+set(EIGEN_BUILD_TESTING OFF CACHE BOOL "" FORCE)
+set(BUILD_TESTING OFF CACHE BOOL "" FORCE)
 FetchContent_Declare(
   Eigen
   GIT_REPOSITORY https://gitlab.com/libeigen/eigen.git
@@ -15,7 +21,10 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(Eigen)
 
-file(GLOB_RECURSE LIB_SOURCES "${CMAKE_SOURCE_DIR}/lib/*.cpp")
+file(GLOB_RECURSE LIB_SOURCES 
+  "${CMAKE_SOURCE_DIR}/lib/*.cpp"
+  "${CMAKE_SOURCE_DIR}/lib/*.cc"
+)
 
 if(LIB_SOURCES)
   add_library(${PROJECT_NAME}_lib ${LIB_SOURCES})
@@ -33,4 +42,4 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(googletest)
 
 enable_testing()
-# add_subdirectory(tests)
+add_subdirectory(tests)

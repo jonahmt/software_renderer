@@ -3,9 +3,9 @@
 #include <vector>
 
 #include "camera.h"
-#include "math.h"
 #include "pixelbuffer.h"
 #include "scene.h"
+#include "sr_math.h"
 
 namespace softrender {
 

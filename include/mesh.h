@@ -3,7 +3,7 @@
 #include <cstdint>
 #include <vector>
 
-#include "math.h"
+#include "sr_math.h"
 
 namespace softrender {
 

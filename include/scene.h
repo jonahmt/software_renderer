@@ -3,8 +3,8 @@
 #include <cstdint>
 #include <vector>
 
-#include "math.h"
 #include "mesh.h"
+#include "sr_math.h"
 #include "texture.h"
 
 namespace softrender {

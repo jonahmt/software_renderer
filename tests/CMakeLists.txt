@@ -1,0 +1,4 @@
+add_executable(pixelbuffer_test pixelbuffer_test.cc)
+target_link_libraries(pixelbuffer_test PRIVATE SoftwareRenderer_lib gtest_main)
+add_test(NAME pixelbuffer_test COMMAND pixelbuffer_test)
+
